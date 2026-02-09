@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="sv">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>NordTech Password Strength</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <!-- Weather Widget -->
+    <div class="weather-widget">
+      <div class="weather-header">
+        <h3>🌤️</h3>
+        <button id="geoBtn" type="button" class="btn-geo" title="Använd min plats">📍</button>
+      </div>
+      <div class="weather-search">
+        <input id="cityInput" type="text" placeholder="Sök stad..." autocomplete="off" />
+        <button id="searchBtn" type="button" class="btn-search">🔍</button>
+      </div>
+      <div id="weatherContent" class="weather-content">
+        <div class="weather-loading">Laddar...</div>
+      </div>
+      <div id="weatherError" class="weather-error"></div>
+    </div>
+
+    <main class="card">
+      <h1>NordTech Password Strength</h1>
+
+      <!-- Tab Switcher -->
+      <div class="tab-switcher">
+        <button class="tab-btn active" data-tab="checker">Lösenordskontrollant</button>
+        <button class="tab-btn" data-tab="creator">Lösenordsskapare</button>
+        <button class="tab-btn" data-tab="leaked">Läckta lösenord</button>
+      </div>
+
+      <!-- Tab A: Password Checker -->
+      <div id="checker-tab" class="tab-content active">
+        <label for="pw-checker" class="label">Ditt lösenord</label>
+        <div class="row">
+          <input id="pw-checker" type="text" autocomplete="new-password" placeholder="Skriv lösenord…" />
+          <button id="toggle-checker" type="button" class="btn">Dölj</button>
+        </div>
+
+        <div class="meter">
+          <div id="bar-checker" class="bar" style="width:0%"></div>
+        </div>
+
+        <div class="status">
+          <span class="badge" id="badge-checker">—</span>
+          <span class="score" id="scoreText-checker">Börja skriva…</span>
+        </div>
+
+        <details class="tips" open>
+          <summary>📋 Krav för maxbetyg (Superstarkt!)</summary>
+          <ul id="max-requirements-list">
+            <!-- Populated by JavaScript -->
+          </ul>
+        </details>
+      </div>
+
+      <!-- Tab B: Password Creator -->
+      <div id="creator-tab" class="tab-content">
+        <label for="pw-creator" class="label">Bygg ditt lösenord</label>
+        <div class="row">
+          <input id="pw-creator" type="text" autocomplete="new-password" placeholder="Skriv eller generera…" />
+          <button id="toggle-creator" type="button" class="btn">Dölj</button>
+        </div>
+
+        <div class="meter">
+          <div id="bar-creator" class="bar" style="width:0%"></div>
+        </div>
+
+        <div class="status">
+          <span class="badge" id="badge-creator">—</span>
+          <span class="score" id="scoreText-creator">Börja skriva…</span>
+        </div>
+
+        <div class="checklist">
+          <h3>Kravlista</h3>
+          <ul id="creator-checklist">
+            <!-- Populated by JavaScript -->
+          </ul>
+        </div>
+
+        <div class="example-box">
+          <div class="example-header">
+            <h3>Generera superstarkt lösenord</h3>
+            <button id="generateBtn" type="button" class="btn btn-generate">Generera ny</button>
+          </div>
+          <div class="example-display">
+            <code id="examplePw"></code>
+            <button type="button" class="btn-copy" id="copyBtn" title="Kopiera lösenord">📋</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Tab C: Leaked Password Check -->
+      <div id="leaked-tab" class="tab-content">
+        <label for="pw-leaked" class="label">Kontrollera lösenord</label>
+        <div class="row">
+          <input id="pw-leaked" type="text" autocomplete="off" placeholder="Skriv lösenord…" />
+          <button id="checkLeakBtn" type="button" class="btn btn-check">Kontrollera läcka</button>
+        </div>
+
+        <div id="leakStatus" class="leak-status">
+          <span id="leakMessage" class="leak-message">Ange ett lösenord och klicka för att kontrollera.</span>
+        </div>
+
+        <details class="privacy-note" open>
+          <summary>🔒 Privacy</summary>
+          <p>Vi skickar aldrig lösenordet, bara en hash-prefix kontroll till Have I Been Pwned.</p>
+        </details>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <small>NordTech AB · Demo-app för DevSecOps-pipeline</small>
+    </footer>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
